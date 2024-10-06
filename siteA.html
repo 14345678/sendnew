@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>サイトA</title>
+</head>
+<body>
+    <h1>情報を入力</h1>
+    <input type="text" id="input" />
+    <button id="submit">送信</button>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', () => {
+            const inputData = document.getElementById('input').value;
+            // localStorageにデータを保存
+            localStorage.setItem('sharedData', inputData);
+            alert('データが保存されました！');
+            document.getElementById('input').value = ''; // 入力欄をクリア
+        });
+    </script>
+</body>
+</html>

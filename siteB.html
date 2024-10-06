@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>サイトB</title>
+</head>
+<body>
+    <h1>共有された情報</h1>
+    <div id="output">ここにデータが表示されます</div>
+
+    <script>
+        // localStorageからデータを取得
+        const sharedData = localStorage.getItem('sharedData');
+
+        // 取得したデータを表示
+        document.getElementById('output').textContent = sharedData ? sharedData : 'データはありません';
+    </script>
+</body>
+</html>
