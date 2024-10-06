@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>情報共有アプリ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>情報を入力して共有</h1>
+    <input type="text" id="input" placeholder="ここに入力" />
+    <button id="submit">送信</button>
+    
+    <div id="output">ここに共有されたデータが表示されます</div>
+
+    <script>
+        const inputElement = document.getElementById('input');
+        const outputElement = document.getElementById('output');
+
+        // 入力したデータをlocalStorageに保存
+        document.getElementById('submit').addEventListener('click', () => {
+            const inputData = inputElement.value;
+            localStorage.setItem('sharedData', inputData);
+            inputElement.value = ''; // 入力欄をクリア
+            updateOutput(); // 表示を更新
+        });
+
+        // localStorageの変更を監視
+        window.addEventListener('storage', () => {
+            updateOutput();
+        });
+
+        // 表示を更新する関数
+        function updateOutput() {
+            const sharedData = localStorage.getItem('sharedData');
+            outputElement.textContent = sharedData ? sharedData : 'データはありません';
+        }
+
+        // ページ読み込み時に表示を更新
+        updateOutput();
+    </script>
+</body>
+</html>
