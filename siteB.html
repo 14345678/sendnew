@@ -2,18 +2,30 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>サイトB</title>
+    <title>サイトB - 受信</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: green;
+        }
+    </style>
 </head>
 <body>
-    <h1>共有された情報</h1>
+    <h1>受信した情報</h1>
     <div id="output">ここにデータが表示されます</div>
 
     <script>
-        // localStorageからデータを取得
-        const sharedData = localStorage.getItem('sharedData');
+        // URLからクエリパラメータを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const data = urlParams.get('data');
 
         // 取得したデータを表示
-        document.getElementById('output').textContent = sharedData ? sharedData : 'データはありません';
+        document.getElementById('output').textContent = data ? data : 'データはありません';
     </script>
 </body>
 </html>
