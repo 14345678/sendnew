@@ -2,20 +2,26 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>サイトA</title>
+    <title>サイトA - 送信</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>情報を入力</h1>
-    <input type="text" id="input" />
+    <h1>情報を入力して送信</h1>
+    <input type="text" id="input" placeholder="ここに入力" />
     <button id="submit">送信</button>
 
     <script>
         document.getElementById('submit').addEventListener('click', () => {
             const inputData = document.getElementById('input').value;
-            // localStorageにデータを保存
-            localStorage.setItem('sharedData', inputData);
-            alert('データが保存されました！');
-            document.getElementById('input').value = ''; // 入力欄をクリア
+            // サイトBのURLを生成
+            const siteBUrl = `siteB.html?data=${encodeURIComponent(inputData)}`;
+            // サイトBにリダイレクト
+            window.location.href = siteBUrl;
         });
     </script>
 </body>
