@@ -15,13 +15,18 @@
     <input type="text" id="input" placeholder="ここに入力" />
     <button id="submit">送信</button>
 
+    <h2>生成されたURL</h2>
+    <input type="text" id="outputUrl" readonly />
+
     <script>
         document.getElementById('submit').addEventListener('click', () => {
             const inputData = document.getElementById('input').value;
             // サイトBのURLを生成
             const siteBUrl = `siteB.html?data=${encodeURIComponent(inputData)}`;
-            // サイトBにリダイレクト
-            window.location.href = siteBUrl;
+            // 生成されたURLを出力
+            document.getElementById('outputUrl').value = siteBUrl;
+            alert('URLが生成されました。コピーしてください。');
+            document.getElementById('input').value = ''; // 入力欄をクリア
         });
     </script>
 </body>
